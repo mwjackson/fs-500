@@ -1,24 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\Projects\fs-500\src\fs-500-tests\nunit.nunit" total="0" errors="0" failures="0" not-run="1" inconclusive="0" ignored="0" skipped="0" invalid="1" date="2010-03-10" time="20:46:26">
+<test-results name="D:\Projects\fs-500\src\fs-500-tests\nunit.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2010-03-10" time="20:53:31">
   <environment nunit-version="2.5.3.9345" clr-version="4.0.21006.1" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="D:\Projects\fs-500\lib\NUnit 2.5.3.9345" machine-name="JACKO" user="matt" user-domain="jacko" />
   <culture-info current-culture="en-GB" current-uiculture="en-US" />
-  <test-suite name="D:\Projects\fs-500\src\fs-500-tests\nunit.nunit" executed="True" success="False" time="0.039" asserts="0">
+  <test-suite name="D:\Projects\fs-500\src\fs-500-tests\nunit.nunit" executed="True" success="True" time="0.063" asserts="0">
     <results>
-      <test-suite name="D:\Projects\fs-500\src\fs-500-tests\bin\Debug\fs_500_tests.dll" executed="True" success="False" time="0.034" asserts="0">
+      <test-suite name="D:\Projects\fs-500\src\fs-500-tests\bin\Debug\fs_500_tests.dll" executed="True" success="True" time="0.054" asserts="0">
         <results>
-          <test-suite name="fivehundred" executed="True" success="False" time="0.028" asserts="0">
+          <test-suite name="Fivehundred" executed="True" success="True" time="0.046" asserts="0">
             <results>
-              <test-suite name="DeckTests" executed="False">
-                <reason>
-                  <message><![CDATA[No suitable constructor was found]]></message>
-                </reason>
+              <test-suite name="DeckTests" executed="True" success="True" time="0.040" asserts="0">
                 <results>
-                  <test-case name="fivehundred.DeckTests.dealing_one_card_should_return_a_card" executed="False">
-                    <reason>
-                      <message><![CDATA[No suitable constructor was found]]></message>
-                    </reason>
-                  </test-case>
+                  <test-case name="Fivehundred.DeckTests.dealing_one_card_should_return_a_card" executed="True" success="True" time="0.015" asserts="1" />
                 </results>
               </test-suite>
             </results>
