@@ -1,0 +1,12 @@
+obj
+bin
+_Resharper.*
+*.fsproj.user
+*.resharper.user
+*.resharper
+*.suo
+*.cache
+*~
+*.swp
+.hg
+.hgignore
