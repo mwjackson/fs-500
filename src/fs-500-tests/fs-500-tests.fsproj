@@ -43,6 +43,13 @@
   <ItemGroup>
     <Compile Include="DeckTests.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fs-500\fs-500.fsproj">
+      <Name>fs-500</Name>
+      <Project>{15774399-36d1-4ecc-813c-99f68c43bc56}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.
