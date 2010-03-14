@@ -16,6 +16,7 @@ type Suit =
         | Hearts -> "Hearts"
 
 type Card = 
+    | Joker
     | Ace of Suit
     | King of Suit
     | Queen of Suit
@@ -24,6 +25,7 @@ type Card =
 
     override this.ToString() =
         let string = match this:Card with
+                        | Joker -> "Joker"
                         | Ace(suit) -> "Ace of " + suit.ToString()
                         | King(suit) -> "King of " + suit.ToString()
                         | Queen(suit) -> "Queen of " + suit.ToString()
@@ -35,17 +37,23 @@ type Deck() =
     
     let deck = 
         [
+            yield Joker
             for suit in [Suit.Spades; Suit.Clubs; Suit.Diamonds; Suit.Hearts] do
                 yield Ace(suit)
                 yield King(suit)
                 yield Queen(suit)
                 yield Jack(suit)
-                for value in 2..10 do
+                for value in 5..10 do
                     yield Value(value, suit)
+            yield Value(4, Diamonds)
+            yield Value(4, Hearts)
         ]
 
     member x.Deal(numberOfCards) = 
         let rnd = new Random()
-        List.init<Card> numberOfCards (fun i -> deck.Item(rnd.Next(0, deck.Length)))
+        List.sortWith (fun a b -> rnd.Next(-1,1)) deck
+        |> Seq.take numberOfCards
+        |> Seq.toList
 
-
+    member x.Deal() =
+        x.Deal(deck.Length)

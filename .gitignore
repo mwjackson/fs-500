@@ -10,3 +10,4 @@ _Resharper.*
 *.swp
 .hg
 .hgignore
+/src/fs-500-tests/nunit.VisualState.xml
