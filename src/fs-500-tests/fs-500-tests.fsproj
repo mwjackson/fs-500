@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DeckTests.fs" />
     <Compile Include="GameTests.fs" />
+    <Compile Include="BiddingTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\fs-500\fs-500.fsproj">

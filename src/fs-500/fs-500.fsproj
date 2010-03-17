@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deck.fs" />
+    <Compile Include="Player.fs" />
+    <Compile Include="Game.fs" />
+    <Compile Include="Bid.fs" />
+    <Compile Include="Bidding.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" />
