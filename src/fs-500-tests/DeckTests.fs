@@ -2,6 +2,7 @@
 
 open Fivehundred
 
+open System 
 open NUnit.Framework
 
 [<TestFixture>]
@@ -77,3 +78,14 @@ type DeckTests() =
             // can't differentiate nunit List.Contains with f# list
             let containsFour = NUnit.Framework.Constraints.ContainsConstraint(four)
             Assert.That(cards, NUnit.Framework.Constraints.NotConstraint.op_LogicalNot(containsFour))
+
+[<TestFixture>]
+type SuitTests() = 
+
+    [<Test>][<Ignore>]
+    member test.two_of_the_same_suits_should_return_0() = 
+        let heart1 = Suit.Hearts
+        let heart2 = Suit.Hearts
+
+        let result = (heart1 :> IComparable).CompareTo(heart2)
+        Assert.That(result, Is.EqualTo(0))

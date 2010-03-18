@@ -2,7 +2,7 @@
 
 open System
 
-type Suit =
+type Suit  =
     | Spades
     | Clubs
     | Diamonds
@@ -14,6 +14,13 @@ type Suit =
         | Clubs -> "Clubs"
         | Diamonds -> "Diamonds"
         | Hearts -> "Hearts"
+
+//    interface IComparable with
+//        member this.CompareTo(suit) =
+//            match (this, suit) with
+//            | (Hearts, Hearts) -> 0
+//            | Hearts, _ -> 1
+
 
 type Card = 
     | Joker
