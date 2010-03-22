@@ -6,27 +6,50 @@ open NUnit.Framework
 
 [<TestFixture>]
 type BiddingTests() =
+
+    [<Test>]
+    member test.a_player_with_no_ace_or_joker_or_jack_should_pass() =
+        let playersCards = [ Value(8, Hearts); Value(9, Hearts); Queen(Hearts); ]
+        let bidding = new Bidding(playersCards, [])
+        let bid = bidding.NextBid()
+        Assert.That(bid, Is.EqualTo(Pass))
    
     [<Test>]
     member test.a_player_with_an_ace_should_bid_six_of_that_suit() =
         let playersCards = [ Ace(Hearts) ]
-        let bidding = new Bidding(playersCards)
+        let bidding = new Bidding(playersCards, [])
         let bid = bidding.NextBid()
         Assert.That(bid, Is.EqualTo(Bid(6, Hearts)))
 
     [<Test>]
     member test.a_player_with_joker_should_bid_six_no_trumps() =
         let playersCards = [ Joker ]
-        let bidding = new Bidding(playersCards)
+        let bidding = new Bidding(playersCards, [])
         let bid = bidding.NextBid()
         Assert.That(bid, Is.EqualTo(NoTrumps(6)))
         
     [<Test>]
     member test.a_player_with_joker_and_an_ace_should_bid_six_no_trumps() =
         let playersCards = [ Ace(Hearts); Joker ]
-        let bidding = new Bidding(playersCards)
+        let bidding = new Bidding(playersCards, [])
         let bid = bidding.NextBid()
         Assert.That(bid, Is.EqualTo(NoTrumps(6)))
+
+    [<Test>]
+    member test.a_player_with_previous_bid_of_highest_six_bid_should_pass_if_they_only_hold_an_ace() =
+        let previousBids = [ Bid(6, Hearts) ]
+        let playersCards = [ Ace(Clubs); ]
+        let bidding = new Bidding(playersCards, previousBids)
+        let bid = bidding.NextBid()
+        Assert.That(bid, Is.EqualTo(Pass))
+
+    [<Test>]
+    member test.a_player_whose_partner_has_bid_six_and_holds_a_bower_should_bid_seven() =
+        let previousBids = [ Bid(6, Hearts); Bid(6, Diamonds) ]
+        let playersCards = [ Jack(Diamonds); ]
+        let bidding = new Bidding(playersCards, previousBids)
+        let bid = bidding.NextBid()
+        Assert.That(bid, Is.EqualTo(Bid(7, Diamonds)))
 
 [<TestFixture>]
 type BidSortTests() =

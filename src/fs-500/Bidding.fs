@@ -23,12 +23,14 @@ type BidSort() =
             0
         | NoTrumps(value1), NoTrumps(value2) -> 
             value2-value1
+        | Bid(_, _), nothing -> -1
         | _ -> 
             0
         
 
-type Bidding(playersCards) =
+type Bidding(playersCards:List<Card>, previousBids:List<Bid>) =
     let playersCards = playersCards
+    let previousBids = previousBids
 
     let GetAllBids() =
         [
@@ -41,5 +43,10 @@ type Bidding(playersCards) =
 
     member this.NextBid() = 
         let bidSort = new BidSort()
-        let bids = GetAllBids() |> List.sortWith (fun a b -> bidSort.Sort(a, b)) 
-        bids.Head
+        let bids = GetAllBids() |> List.sortWith (fun a b -> bidSort.Sort(a, b))
+        match previousBids with
+        | [] -> bids.Head
+        | head::tail ->
+            if (bidSort.Sort(bids.Head, head) < 0) then bids.Head
+            else Pass
+        | _ -> Pass
